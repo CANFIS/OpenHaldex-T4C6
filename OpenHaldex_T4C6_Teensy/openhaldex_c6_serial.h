@@ -14,20 +14,6 @@
 #include "openhaldex_serial_slave.h"
 openhaldexSerialSlave ohSerial;
 
-void openhaldex_c6_serial_send_error_response(openhaldexSerialSlave::openhaldex_serial_slave_frame_t *frame)
-{
-  // Object which holds a response to be sent:
-  static openhaldexSerialSlave::openhaldex_serial_slave_frame_t openhaldex_c6_serial_response_frame;
-
-  // Set the opcode and subcode in the response to be the same as in the request.
-  openhaldex_c6_serial_response_frame.opcode = frame->opcode;
-  openhaldex_c6_serial_response_frame.subcode = frame->subcode;
-
-  // Send a frame without data.
-  openhaldex_c6_serial_response_frame.data_length = 0;
-  ohSerial.send_frame(&OPENHALDEX_C6_SERIAL_PORT, &openhaldex_c6_serial_response_frame);
-}
-
 void openhaldex_c6_serial_handle_GET(openhaldexSerialSlave::openhaldex_serial_slave_frame_t *frame, openhaldexSerialSlave::openhaldex_serial_slave_frame_t *openhaldex_c6_serial_response_frame)
 {
   switch (frame->subcode)
