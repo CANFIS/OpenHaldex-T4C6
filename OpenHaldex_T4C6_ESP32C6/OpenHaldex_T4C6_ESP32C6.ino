@@ -59,7 +59,7 @@ bool connect_to_wifi_sta()
                                          pdTRUE, pdFALSE,
                                          pdMS_TO_TICKS(30 * 1000));
 
-  // If connected, start the "Dasboard" page.
+  // If connected, start the "Dashboard" page.
   if (bits & WIFI_CONNECTED_BIT)
   {
 #ifdef ENABLE_ACCESSORY_SYSTEM
@@ -182,7 +182,7 @@ void main_task(void *arg)
     accessory_send(&openhaldex_accessory_message);
 #endif
 
-    // If the file descriptor for the websocket has been obtained, send the emulated bytes to the "Dasboard" webpage as an SSE.
+    // If the file descriptor for the websocket has been obtained, send the emulated bytes to the "Dashboard" webpage as an SSE.
     if (mySocketFD > 0)
     {
       sprintf(sse_data_buf, "%02X,%02X,%02X,%02X", openhaldex_transaction_rx.data[0], openhaldex_transaction_rx.data[1], openhaldex_transaction_rx.data[2], openhaldex_transaction_rx.data[4]);
@@ -216,7 +216,7 @@ void main_task(void *arg)
         accessory_send(&openhaldex_accessory_message);
 #endif
 
-        // If the file descriptor for the websocket has been obtained, send the received bytes to the "Dasboard" webpage as an SSE.
+        // If the file descriptor for the websocket has been obtained, send the received bytes to the "Dashboard" webpage as an SSE.
         if (mySocketFD > 0)
         {
           sprintf(sse_data_buf, "%02X,%02X,%02X,%02X", openhaldex_transaction_rx.data[0], openhaldex_transaction_rx.data[1], openhaldex_transaction_rx.data[2], openhaldex_transaction_rx.data[4]);

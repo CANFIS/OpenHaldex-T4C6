@@ -182,7 +182,7 @@ esp_err_t set_wifi_settings(httpd_req_t *req)
 httpd_handle_t mySocketHD;
 int mySocketFD;
 
-// When the "Dasboard" webpage is entered/refreshed, the eventListener is added and this function is triggered
+// When the "Dashboard" webpage is entered/refreshed, the eventListener is added and this function is triggered
 esp_err_t handle_sse(httpd_req_t *req)
 {
   // Store the handle and file descriptor.
